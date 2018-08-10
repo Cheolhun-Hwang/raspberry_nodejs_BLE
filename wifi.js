@@ -1,18 +1,47 @@
-var wifi = require('node-wifi');
+var wifi = require('pi-wifi');
 
-var wifiList;
-
-wifi.init({
-	iface : null	//network interface, choose a random wifi interface if set to null
+wifi.check('p2p-dev-wlan0', (err, result)=>{
+	if(err){
+		return console.error(err.message);
+	}
+	console.log(result);
 });
 
-wifi.scan((err, networks)=>{
+/*wifi.setCurrentInterface('p2p-dev-wlan0', (err)=>{
 	if(err){
-		console.log(err);
+		return console.error(err.message);
 	}else{
-		wifiList = networks;
-		console.log(wifiList);
+		wifi.scan((err, networks)=>{
+			if(err){
+				return console.error(err.message);
+			}else{
+				console.log(networks);
+			}
+		});
 	}
 });
+*/
+
+var networkDetails = {
+	ssid : 'KWN_413',
+	username : 'ava_app',
+	password : '',
+}
 
 
+wifi.connectOpen('KWN_413', (err)=>{
+	if(err){
+		return console.error(err.message);
+	}else{
+		console.log('connected OK!');
+	}
+});
+/*
+wifi.connect('islab', '20460629', (err)=>{
+	if(err){
+		return console.error(err.message);
+	}else{
+		console.log('Connected!!');
+	}
+});
+*/
