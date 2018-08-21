@@ -8,6 +8,7 @@ var BlenoPrimaryService = bleno.PrimaryService;
 var AuthCharacteristic = require('./ble-AuthCharacteristic.js');
 var WifiCharacteristic = require('./ble-WifiCharacteristic.js');
 var LEDCharacteristic = require('./ble-LEDCharacteristic.js');
+var RadioCharacteristic = require('./ble-RadioCharacteristic.js');
 
 function AvaService(){
 	bleno.PrimaryService.call(this, {
@@ -15,7 +16,8 @@ function AvaService(){
 		characteristics : [
 			new AuthCharacteristic(),
 			new WifiCharacteristic(),
-			new LEDCharacteristic()
+			new LEDCharacteristic(),
+			new RadioCharacteristic()
 		]
 	});
 };
